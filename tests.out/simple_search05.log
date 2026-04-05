@@ -1,0 +1,13 @@
+==14363== Memcheck, a memory error detector
+==14363== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==14363== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==14363== Command: ./bin/hw6 -l 1,22 -s intelligence -r wisdom tests.in/simple_search05.in.txt tests.out/simple_search05.out.txt
+==14363== 
+==14363== 
+==14363== HEAP SUMMARY:
+==14363==     in use at exit: 0 bytes in 0 blocks
+==14363==   total heap usage: 4 allocs, 4 frees, 9,136 bytes allocated
+==14363== 
+==14363== All heap blocks were freed -- no leaks are possible
+==14363== 
+==14363== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

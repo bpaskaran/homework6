@@ -1,0 +1,13 @@
+==14638== Memcheck, a memory error detector
+==14638== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==14638== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==14638== Command: ./bin/hw6 -s pal* -w -r all -l 30,44 tests.in/wildcard_search11.in.txt tests.out/wildcard_search11.out.txt
+==14638== 
+==14638== 
+==14638== HEAP SUMMARY:
+==14638==     in use at exit: 0 bytes in 0 blocks
+==14638==   total heap usage: 4 allocs, 4 frees, 9,136 bytes allocated
+==14638== 
+==14638== All heap blocks were freed -- no leaks are possible
+==14638== 
+==14638== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,13 @@
+==14348== Memcheck, a memory error detector
+==14348== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==14348== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==14348== Command: ./bin/hw6 -r 1st -l 1,20 -s first tests.in/simple_search04.in.txt tests.out/simple_search04.out.txt
+==14348== 
+==14348== 
+==14348== HEAP SUMMARY:
+==14348==     in use at exit: 0 bytes in 0 blocks
+==14348==   total heap usage: 4 allocs, 4 frees, 9,136 bytes allocated
+==14348== 
+==14348== All heap blocks were freed -- no leaks are possible
+==14348== 
+==14348== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

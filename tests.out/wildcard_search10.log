@@ -1,0 +1,13 @@
+==14624== Memcheck, a memory error detector
+==14624== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==14624== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==14624== Command: ./bin/hw6 -w -s Bu* -r \ However, tests.in/wildcard_search10.in.txt tests.out/wildcard_search10.out.txt
+==14624== 
+==14624== 
+==14624== HEAP SUMMARY:
+==14624==     in use at exit: 0 bytes in 0 blocks
+==14624==   total heap usage: 4 allocs, 4 frees, 9,136 bytes allocated
+==14624== 
+==14624== All heap blocks were freed -- no leaks are possible
+==14624== 
+==14624== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
