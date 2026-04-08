@@ -1,10 +1,34 @@
 {
   "id": "Criterion v2.4.1",
-  "passed": 84,
-  "failed": 1,
+  "passed": 88,
+  "failed": 0,
   "errored": 0,
   "skipped": 0,
   "test_suites": [
+    {
+      "name": "hw6_extra",
+      "passed": 3,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "simple_replace_run",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "missing_s_argument",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "duplicate_s_argument",
+          "assertions": 1,
+          "status": "PASSED"
+        }
+      ]
+    },
     {
       "name": "base_valgrind",
       "passed": 34,
@@ -365,8 +389,8 @@
     },
     {
       "name": "base_invalid_args",
-      "passed": 16,
-      "failed": 1,
+      "passed": 17,
+      "failed": 0,
       "errored": 0,
       "skipped": 0,
       "tests": [
@@ -448,10 +472,7 @@
         {
           "name": "duplicate_argument01",
           "assertions": 1,
-          "status": "FAILED",
-          "messages": [
-            "tests/unit_tests.c:50: The program exited with status 4 instead of 8."
-          ]
+          "status": "PASSED"
         },
         {
           "name": "args_missing01",

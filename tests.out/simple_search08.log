@@ -1,13 +1,13 @@
-==14415== Memcheck, a memory error detector
-==14415== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==14415== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==14415== Command: ./bin/hw6 -r During -s In tests.in/simple_search08.in.txt tests.out/simple_search08.out.txt
-==14415== 
-==14415== 
-==14415== HEAP SUMMARY:
-==14415==     in use at exit: 0 bytes in 0 blocks
-==14415==   total heap usage: 4 allocs, 4 frees, 9,136 bytes allocated
-==14415== 
-==14415== All heap blocks were freed -- no leaks are possible
-==14415== 
-==14415== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==21851== Memcheck, a memory error detector
+==21851== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==21851== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==21851== Command: ./bin/hw6 -r During -s In tests.in/simple_search08.in.txt tests.out/simple_search08.out.txt
+==21851== 
+==21851== 
+==21851== HEAP SUMMARY:
+==21851==     in use at exit: 0 bytes in 0 blocks
+==21851==   total heap usage: 4 allocs, 4 frees, 9,136 bytes allocated
+==21851== 
+==21851== All heap blocks were freed -- no leaks are possible
+==21851== 
+==21851== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

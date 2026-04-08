@@ -716,3 +716,20 @@ Test(base_invalid_args, wildcard_invalid02, .description="Search text is not pro
     int status = run_using_system_no_valgrind(test_name, args);
     expect_error_exit(status, WILDCARD_INVALID);
 }
+
+// added by me
+
+Test(hw6_extra, missing_s_argument) {
+    int result = system("./bin/hw6 -r hi input.txt out.txt");
+    cr_assert(result != 0);
+}
+
+Test(hw6_extra, duplicate_s_argument) {
+    int result = system("./bin/hw6 -s a -s b -r c input.txt out.txt");
+    cr_assert(result != 0);
+}
+
+Test(hw6_extra, simple_replace_run) {
+    int result = system("./bin/hw6 -s the -r end tests.in.orig/turing.txt out.txt");
+    cr_assert_eq(result, 0);
+}
