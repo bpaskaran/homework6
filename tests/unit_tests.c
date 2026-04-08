@@ -733,3 +733,61 @@ Test(hw6_extra, simple_replace_run) {
     int result = system("./bin/hw6 -s the -r end tests.in.orig/turing.txt out.txt");
     cr_assert_eq(result, 0);
 }
+Test(hw6_extra, wildcard_prefix_basic) {
+    int result = system("./bin/hw6 -s Tur* -r TEST -w tests.in.orig/turing.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, wildcard_suffix_basic) {
+    int result = system("./bin/hw6 -s *ing -r TEST -w tests.in.orig/turing.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, l_range_basic) {
+    int result = system("./bin/hw6 -s the -r X -l 1,5 tests.in.orig/unix.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, invalid_l_format) {
+    int result = system("./bin/hw6 -s a -r b -l 5 tests.in.orig/unix.txt out.txt");
+    cr_assert(result != 0);
+}
+
+Test(hw6_extra, wildcard_invalid_multiple_stars) {
+    int result = system("./bin/hw6 -s *a* -r b -w tests.in.orig/unix.txt out.txt");
+    cr_assert(result != 0);
+}
+Test(hw6_extra, wildcard_prefix_small) {
+    int result = system("./bin/hw6 -s pro* -r X -w tests.in.orig/turing.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, wildcard_suffix_small) {
+    int result = system("./bin/hw6 -s *ion -r X -w tests.in.orig/unix.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, l_range_single_line) {
+    int result = system("./bin/hw6 -s the -r X -l 5,5 tests.in.orig/unix.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, l_range_full_file) {
+    int result = system("./bin/hw6 -s the -r X -l 1,100 tests.in.orig/unix.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, no_wildcard_flag) {
+    int result = system("./bin/hw6 -s Tur* -r X tests.in.orig/turing.txt out.txt");
+    cr_assert(result == 0);
+}
+
+Test(hw6_extra, invalid_wildcard_no_star) {
+    int result = system("./bin/hw6 -s test -r X -w tests.in.orig/unix.txt out.txt");
+    cr_assert(result != 0);
+}
+
+Test(hw6_extra, invalid_l_non_numeric) {
+    int result = system("./bin/hw6 -s a -r b -l a,b tests.in.orig/unix.txt out.txt");
+    cr_assert(result != 0);
+}

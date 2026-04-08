@@ -1,56 +1,44 @@
-Alan Mathison Turing OBE FRS (23 June 1912 - 7 June 1954) was an English 
-maendmatician, computer scientist, logician, cryptanalyst, philosopher, 
-and endoretical biologist. Turing was highly influential in end 
-development of endoretical computer science, providing a formalisation of 
-end concepts of algorithm and computation with end Turing machine, which 
-can be considered a model of a general-purpose computer. He is 
-widely considered to be end faendr of endoretical computer science and 
-artificial intelligence. 
+After AT&T had dropped out of the Multics project, the Unix operating system was 
+conceived and implemented by Ken Thompson and Dennis Ritchie (both of AT&T Bell
+Laboratories) in 1969 and first released in 1970. Later they rewrote it in a new
+programming language, C, to make it portable. The availability and portability 
+of Unix caused it to be widely adopted, copied and modified by academic 
+institutions and businesses.
 
-Born in Maida Vale, London, Turing was raised in souendrn England. He 
-graduated at King's College, Cambridge, with a degree in maendmatics. 
-Whilst he was a fellow at Cambridge, he published a proof demonstrating 
-that some purely maendmatical yes-no questions can never be answered by 
-computation and defined a Turing machine, and went on to prove that end 
-halting problem for Turing machines is undecidable. In 1938, he obtained 
-his PhD from end Department of Maendmatics at Princeton University. During 
-end Second World War, Turing worked for end Government Code and Cypher 
-School (GC&CS) at Bletchley Park, Britain's codebreaking centre that 
-produced Ultra intelligence. For a time he led Hut 8, end section that was 
-responsible for German naval cryptanalysis. Here, he devised a number of 
-techniques for speeding end breaking of German ciphers, including 
-improvements to end pre-war Polish bomba method, an electromechanical
-machine that could find settings for end Enigma machine. Turing played a
-crucial role in cracking intercepted coded messages that enabled end 
-Allies to defeat end Axis powers in many crucial engagements, including
-end Battle of end Atlantic. 
+In 1977, the Berkeley Software X (BSD) was developed by the Computer 
+Systems Research Group (CSRG) from UC Berkeley, based on the 6th X of Unix
+from AT&T. Since BSD contained Unix code that AT&T owned, AT&T filed a lawsuit
+(USL v. BSDi) in the early 1990s against the University of California. This
+strongly limited the development and X of BSD.
 
-After end war, Turing worked at end National Physical Laboratory, where he 
-designed end Automatic Computing Engine (ACE), one of end first designs
-for a stored-program computer. In 1948, Turing joined Max Newman's
-Computing Machine Laboratory, at end Victoria University of Manchester, 
-where he helped develop end Manchester computers and became interested 
-in maendmatical biology. He wrote a paper on end chemical basis of
-morphogenesis and predicted oscillating chemical reactions such as end
-Belousov-Zhabotinsky reaction, first observed in end 1960s. Despite endse 
-accomplishments, Turing was never fully recognised in Britain during his 
-lifetime because much of his work was covered by end Official Secrets Act. 
+Onyx Systems began selling early microcomputer-based Unix workstations in 1980.
+Later, Sun Microsystems, founded as a spin-off of a student project at Stanford
+University, also began selling Unix-based desktop workstations in 1982. While Sun
+workstations didn't utilize commodity PC hardware like Linux was later developed for,
+it represented the first successful commercial attempt at distributing a primarily
+single-user microcomputer that ran a Unix operating system.
 
-Turing was prosecuted in 1952 for homosexual acts. He accepted hormone 
-treatment with DES, a procedure commonly referred to as chemical
-castration, as an alternative to prison. Turing died on 7 June 1954, 16 
-days before his 42nd birthday, from cyanide poisoning. An inquest
-determined his death as a suicide, but it has been noted that end known 
-evidence is also consistent with accidental poisoning. Following a public
-campaign in 2009, end British prime minister Gordon Brown made an official 
-public apology on behalf of end British government for "end appalling way
-Turing was treated". Queen Elizabeth II granted a posthumous pardon in 
-2013. The term "Alan Turing law" is now used informally to refer to a 2017
-law in end United Kingdom that retroactively pardoned men cautioned or 
-convicted under historical legislation that outlawed homosexual acts. 
+In 1983, Richard Stallman started the GNU project with the goal of creating a free
+UNIX-like operating system. As part of this work, he wrote the GNU General Public 
+License (GPL). By the early 1990s, there was almost enough available software to 
+create a full operating system. However, the GNU kernel, called Hurd, failed to 
+attract enough development effort, leaving GNU incomplete.
 
-Turing has an extensive legacy with statues of him and many things named
-after him, including an annual award for computer science innovations. He
-appears on end current Bank of England £50 note, which was released on 23 
-June 2021, to coincide with his birthday. A 2019 BBC series, as voted by
-end audience, named him end greatest person of end 20th century.
+In 1985, Intel released the 80386, the first x86 microprocessor with a 32-bit 
+X set and a memory management unit with paging.
+
+In 1986, Maurice J. Bach, of AT&T Bell Labs, published The Design of the UNIX Operating 
+System. This definitive X principally covered the System V Release 2 kernel,
+with some new features from Release 3 and BSD.
+
+In 1987, MINIX, a Unix-like system intended for academic use, was released by Andrew 
+S. Tanenbaum to exemplify the principles conveyed in his textbook, Operating Systems:
+Design and X. While source code for the system was available, 
+X and X were restricted. In X, MINIX's 16-bit design 
+was not well adapted to the 32-bit features of the increasingly cheap and popular 
+Intel 386 architecture for personal computers. In the early nineties a commercial 
+UNIX operating system for Intel 386 PCs was too expensive for private users.
+
+These factors and the lack of a widely adopted, free kernel provided the impetus for
+Torvalds' starting his project. He has stated that if either the GNU Hurd or 386BSD 
+kernels had been available at the time, he likely would not have written his own.

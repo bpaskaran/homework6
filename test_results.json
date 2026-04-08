@@ -1,24 +1,84 @@
 {
   "id": "Criterion v2.4.1",
-  "passed": 88,
+  "passed": 100,
   "failed": 0,
   "errored": 0,
   "skipped": 0,
   "test_suites": [
     {
       "name": "hw6_extra",
-      "passed": 3,
+      "passed": 15,
       "failed": 0,
       "errored": 0,
       "skipped": 0,
       "tests": [
+        {
+          "name": "wildcard_suffix_small",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "wildcard_suffix_basic",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "wildcard_prefix_small",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "wildcard_prefix_basic",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "wildcard_invalid_multiple_stars",
+          "assertions": 1,
+          "status": "PASSED"
+        },
         {
           "name": "simple_replace_run",
           "assertions": 1,
           "status": "PASSED"
         },
         {
+          "name": "no_wildcard_flag",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
           "name": "missing_s_argument",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "l_range_single_line",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "l_range_full_file",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "l_range_basic",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "invalid_wildcard_no_star",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "invalid_l_non_numeric",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "invalid_l_format",
           "assertions": 1,
           "status": "PASSED"
         },
