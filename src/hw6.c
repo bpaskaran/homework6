@@ -4,221 +4,220 @@
 #include <string.h>
 #include <ctype.h>
 
-// ---------- helpers ----------
-
-int is_word_char(char c) {
+// helper check if char is part of word
+int isWord(char c) {
     return isalnum((unsigned char)c);
 }
 
-int starts_with(const char *word, const char *prefix) {
-    return strncmp(word, prefix, strlen(prefix)) == 0;
+// check prefix
+int checkStart(char *w, char *p) {
+    return strncmp(w, p, strlen(p)) == 0;
 }
 
-int ends_with(const char *word, const char *suffix) {
-    int wl = strlen(word);
-    int sl = strlen(suffix);
+// check suffix
+int checkEnd(char *w, char *s) {
+    int wl = strlen(w);
+    int sl = strlen(s);
     if (sl > wl) return 0;
-    return strcmp(word + wl - sl, suffix) == 0;
+    return strcmp(w + wl - sl, s) == 0;
 }
 
-// ---------- normal replace ----------
-
-void replace_normal(char *line, char *search, char *replace, char *out) {
+// normal replace
+void doReplace(char *line, char *search, char *rep, char *out) {
     out[0] = '\0';
-    char *pos;
+    char *p;
 
-    while ((pos = strstr(line, search)) != NULL) {
-        strncat(out, line, pos - line);
-        strcat(out, replace);
-        line = pos + strlen(search);
+    while ((p = strstr(line, search)) != NULL) {
+        strncat(out, line, p - line);
+        strcat(out, rep);
+        line = p + strlen(search);
     }
     strcat(out, line);
 }
 
-// ---------- wildcard replace ----------
-
-void replace_wildcard(char *line, char *search, char *replace, char *out) {
+// wildcard replace
+void doWildcard(char *line, char *search, char *rep, char *out) {
     out[0] = '\0';
 
-    int prefix = (search[strlen(search)-1] == '*');
+    int len = strlen(search);
+    int isPre = (search[len - 1] == '*');
 
-    char clean[256];
+    char temp[MAX_LINE];
 
-    if (prefix) {
-        strncpy(clean, search, strlen(search)-1);
-        clean[strlen(search)-1] = '\0';
+    if (isPre) {
+        strncpy(temp, search, len - 1);
+        temp[len - 1] = '\0';
     } else {
-        strcpy(clean, search + 1);
+        strcpy(temp, search + 1);
     }
 
     int i = 0;
-    int len = strlen(line);
+    int n = strlen(line);
 
-    while (i < len) {
+    while (i < n) {
 
-        if (is_word_char(line[i])) {
-            char word[256];
+        if (isalnum((unsigned char)line[i])) {
+
+            char word[MAX_LINE];
             int j = 0;
 
-            while (i < len && is_word_char(line[i])) {
-                word[j++] = line[i++];
+            while (i < n && isalnum((unsigned char)line[i])) {
+                word[j++] = line[i];
+                i++;
             }
             word[j] = '\0';
 
-            int match = 0;
-            if (prefix) match = starts_with(word, clean);
-            else match = ends_with(word, clean);
+            int ok = 0;
+            if (isPre)
+                ok = checkStart(word, temp);
+            else
+                ok = checkEnd(word, temp);
 
-            if (match) strcat(out, replace);
-            else strcat(out, word);
-
-        } else {
+            if (ok)
+                strcat(out, rep);
+            else
+                strcat(out, word);
+        }
+        else {
             strncat(out, &line[i], 1);
             i++;
         }
     }
 }
 
-// ---------- main ----------
-
 int main(int argc, char *argv[]) {
 
-    // 1. MISSING_ARGUMENT
     if (argc < 7) return MISSING_ARGUMENT;
 
-    char *search = NULL;
-    char *replace = NULL;
+    char *s = NULL;
+    char *r = NULL;
+
     int start = 1;
     int end = 1000000;
-    int wildcard = 0;
 
-    int s_count = 0, r_count = 0, l_count = 0, w_count = 0;
+    int wflag = 0;
 
-    int s_missing = 0;
-    int r_missing = 0;
-    int l_invalid = 0;
+    int sc = 0, rc = 0, lc = 0, wc = 0;
 
-    // ---------- parse ----------
+    int smiss = 0;
+    int rmiss = 0;
+    int linvalid = 0;
+
+    // parse 
     for (int i = 1; i < argc - 2; i++) {
 
         if (strcmp(argv[i], "-s") == 0) {
-            s_count++;
-            if (i+1 >= argc || argv[i+1][0] == '-') {
-                s_missing = 1;
+            sc++;
+            if (i + 1 >= argc || argv[i + 1][0] == '-') {
+                smiss = 1;
             } else {
-                search = argv[++i];
+                s = argv[++i];
             }
         }
 
         else if (strcmp(argv[i], "-r") == 0) {
-            r_count++;
-            if (i+1 >= argc || argv[i+1][0] == '-') {
-                r_missing = 1;
+            rc++;
+            if (i + 1 >= argc || argv[i + 1][0] == '-') {
+                rmiss = 1;
             } else {
-                replace = argv[++i];
+                r = argv[++i];
             }
         }
 
         else if (strcmp(argv[i], "-l") == 0) {
-            l_count++;
-            if (i+1 >= argc) {
-                l_invalid = 1;
+            lc++;
+            if (i + 1 >= argc) {
+                linvalid = 1;
             } else {
-                char temp[100];
-                strcpy(temp, argv[++i]);
+                char tmp[MAX_LINE];
+                strcpy(tmp, argv[++i]);
 
-                char *a = strtok(temp, ",");
+                char *a = strtok(tmp, ",");
                 char *b = strtok(NULL, ",");
 
                 if (!a || !b) {
-                    l_invalid = 1;
+                    linvalid = 1;
                 } else {
-                    char *endptr1, *endptr2;
+                    char *e1, *e2;
+                    start = strtol(a, &e1, 10);
+                    end = strtol(b, &e2, 10);
 
-                    start = strtol(a, &endptr1, 10);
-                    end = strtol(b, &endptr2, 10);
-
-                    if (*endptr1 != '\0' || *endptr2 != '\0' ||
+                    if (*e1 != '\0' || *e2 != '\0' ||
                         start <= 0 || end <= 0 || start > end) {
-                        l_invalid = 1;
+                        linvalid = 1;
                     }
                 }
             }
         }
 
         else if (strcmp(argv[i], "-w") == 0) {
-            w_count++;
-            wildcard = 1;
+            wc++;
+            wflag = 1;
         }
     }
 
-    // 2. DUPLICATE_ARGUMENT (HIGHEST PRIORITY AFTER MISSING)
-    if (s_count > 1 || r_count > 1 || l_count > 1 || w_count > 1)
+    // duplicates
+    if (sc > 1 || rc > 1 || lc > 1 || wc > 1)
         return DUPLICATE_ARGUMENT;
 
-    // 3. INPUT_FILE_MISSING
-    FILE *in = fopen(argv[argc-2], "r");
+    FILE *in = fopen(argv[argc - 2], "r");
     if (!in) return INPUT_FILE_MISSING;
 
-    // 4. OUTPUT_FILE_UNWRITABLE
-    FILE *out = fopen(argv[argc-1], "w");
+    FILE *out = fopen(argv[argc - 1], "w");
     if (!out) {
         fclose(in);
         return OUTPUT_FILE_UNWRITABLE;
     }
 
-    // 5. S_ARGUMENT_MISSING
-    if (s_missing || !search) {
+    if (smiss || !s) {
         fclose(in); fclose(out);
         return S_ARGUMENT_MISSING;
     }
 
-    // 6. R_ARGUMENT_MISSING
-    if (r_missing || !replace) {
+    if (rmiss || !r) {
         fclose(in); fclose(out);
         return R_ARGUMENT_MISSING;
     }
 
-    // 7. L_ARGUMENT_INVALID
-    if (l_invalid) {
+    if (linvalid) {
         fclose(in); fclose(out);
         return L_ARGUMENT_INVALID;
     }
 
-    // 8. WILDCARD_INVALID
-    if (wildcard) {
+    // wildcard check
+    if (wflag) {
         int stars = 0;
-        for (int i = 0; search[i]; i++)
-            if (search[i] == '*') stars++;
+        for (int i = 0; s[i]; i++) {
+            if (s[i] == '*') stars++;
+        }
 
-        if (stars != 1 ||
-           !(search[0] == '*' || search[strlen(search)-1] == '*')) {
+        if (stars != 1 || (s[0] == '*' && s[strlen(s) - 1] == '*')) {
             fclose(in); fclose(out);
             return WILDCARD_INVALID;
         }
     }
 
-    // ---------- process ----------
     char line[MAX_LINE];
-    char result[MAX_LINE * 4];
-    int line_num = 1;
+    char outbuf[MAX_LINE * 10];
+
+    int lineNum = 1;
 
     while (fgets(line, sizeof(line), in)) {
 
-        if (line_num >= start && line_num <= end) {
+        if (lineNum >= start && lineNum <= end) {
 
-            if (wildcard)
-                replace_wildcard(line, search, replace, result);
+            if (wflag)
+                doWildcard(line, s, r, outbuf);
             else
-                replace_normal(line, search, replace, result);
+                doReplace(line, s, r, outbuf);
 
-            fputs(result, out);
+            fputs(outbuf, out);
         }
         else {
             fputs(line, out);
         }
 
-        line_num++;
+        lineNum++;
     }
 
     fclose(in);
